@@ -62,14 +62,17 @@ button {
 
 .calendar-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
+  width: 100vw;
+  flex-wrap: wrap;
 }
 .month {
   background: var(--card);
   padding: 12px;
   border-radius: 8px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  max-width: 490px;
 }
 .month h3 {
   margin: 0 0 8px 0;
@@ -121,6 +124,7 @@ button {
 .daycell.holiday .paylabel {
   background: rgba(255, 255, 255, 0.85);
 }
+
 .month .totals {
   margin-top: 8px;
   font-weight: 700;
@@ -135,6 +139,55 @@ button {
 
 /* Print layout: 3 columns x 4 rows for the selected year */
 @media print {
+  .month .totals {
+    text-align: right;
+    margin-top: 0px;
+    font-weight: 700;
+  }
+  .month {
+    padding: 2px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .month h3 {
+    margin: 0 0 0 0;
+  }
+
+  .month .grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+  }
+
+  .daycell {
+    padding: 0px;
+    min-height: 20px;
+    font-size: 16px;
+  }
+
+  .daycell .date {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    font-weight: 600;
+  }
+
+  .daycell .paylabel {
+    display: none;
+  }
+
+  .daycell.holiday {
+    background-color: var(--holiday);
+  }
+
+  .daycell.holiday :nth-child(2) {
+    display: none;
+  }
+
   body {
     padding: 0;
   }
@@ -152,7 +205,6 @@ button {
   }
   .month {
     page-break-inside: avoid;
-    padding: 8px;
     border: 1px solid #ccc;
   }
 }
