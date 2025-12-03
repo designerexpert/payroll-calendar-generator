@@ -130,6 +130,97 @@ button {
   font-weight: 700;
 }
 
+/* Mobile friendly: screens under 900px */
+@media (max-width: 899px) {
+  body {
+    padding: 12px;
+  }
+  header {
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+  .lead {
+    font-size: 13px;
+  }
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .controls label {
+    width: 100%;
+  }
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .print-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .print-controls label,
+  .print-controls button {
+    width: 100%;
+  }
+  .print-controls select {
+    width: 100%;
+  }
+  .summary {
+    font-size: 12px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+  .calendar-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .month {
+    width: 100%;
+    max-width: none;
+    padding: 10px;
+  }
+  .month h3 {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+  }
+  .month .grid {
+    gap: 2px;
+  }
+  .daytitle,
+  .daycell {
+    padding: 6px;
+    font-size: 12px;
+  }
+  .daycell {
+    min-height: 56px;
+  }
+  .daycell .date {
+    font-size: 12px;
+  }
+  .daycell .paylabel {
+    font-size: 12px;
+    padding: 2px 4px;
+    margin-top: 12px;
+  }
+  .month .totals {
+    font-size: 13px;
+  }
+  footer {
+    font-size: 11px;
+  }
+}
+
 /* Small screens: show months stacked */
 @media (min-width: 900px) {
   .calendar-container {
