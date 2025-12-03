@@ -1,0 +1,158 @@
+:root {
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --muted: #666;
+  --accent: #2e7d32; /* green for payday */
+  --holiday: #ffb6c1; /* pink */
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Inter, Segoe UI, Arial, sans-serif;
+  background: var(--bg);
+  color: #111;
+  margin: 0;
+  padding: 20px;
+}
+header {
+  margin-bottom: 16px;
+}
+.lead {
+  color: var(--muted);
+  margin-top: 4px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+input,
+select {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 0;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+}
+.print-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.summary {
+  margin: 8px 0;
+  padding: 8px;
+  background: var(--card);
+  border-radius: 6px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.month {
+  background: var(--card);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.month h3 {
+  margin: 0 0 8px 0;
+}
+.month .grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.daytitle,
+.daycell {
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 13px;
+}
+.daytitle {
+  font-weight: 600;
+  color: var(--muted);
+}
+.daycell {
+  min-height: 64px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.02), transparent);
+  position: relative;
+}
+.daycell .date {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  font-weight: 600;
+}
+.daycell.holiday {
+  background: var(--holiday);
+}
+.daycell.payday {
+  outline: 3px solid rgba(46, 125, 50, 0.62);
+  background: rgba(46, 125, 50, 0.42);
+}
+.daycell .paylabel {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+.daycell.holiday .paylabel {
+  background: rgba(255, 255, 255, 0.85);
+}
+.month .totals {
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+/* Small screens: show months stacked */
+@media (min-width: 900px) {
+  .calendar-container {
+    padding: 6px;
+  }
+}
+
+/* Print layout: 3 columns x 4 rows for the selected year */
+@media print {
+  body {
+    padding: 0;
+  }
+  header,
+  .controls,
+  footer {
+    display: none;
+  }
+  .calendar-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 10px;
+    padding: 6mm;
+  }
+  .month {
+    page-break-inside: avoid;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+}

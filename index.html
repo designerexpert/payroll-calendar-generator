@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payroll Calendar Generator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/dayjs@1.11.9/dayjs.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Payroll Calendar Generator</h1>
+    <p class="lead">Generate printable payroll calendars with paydays and US holidays highlighted.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <label>Payment frequency:
+        <select id="frequency">
+          <option value="weekly">Weekly</option>
+          <option value="biweekly">Bi-weekly</option>
+          <option value="monthly" selected>Monthly</option>
+        </select>
+      </label>
+
+      <label>Date of Last Payment:
+        <input id="lastPayment" type="date">
+      </label>
+
+      <label>Payment amount (optional):
+        <input id="amount" type="number" min="0" step="0.01" placeholder="e.g. 1200">
+      </label>
+
+      <button id="renderScroll">Render Scroll</button>
+      <button id="loadMore">Load More Months</button>
+
+      <div class="print-controls">
+        <label>Year for print:
+          <select id="printYear"></select>
+        </label>
+        <button id="renderYear">Render Year (print layout)</button>
+        <button id="doPrint">Print</button>
+      </div>
+    </section>
+
+    <section id="summary" class="summary"></section>
+
+    <section id="calendarContainer" class="calendar-container"></section>
+  </main>
+
+  <footer>
+    <small>Paydays are green. Major US holidays are pink.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
